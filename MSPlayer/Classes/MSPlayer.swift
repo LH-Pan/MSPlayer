@@ -475,7 +475,7 @@ open class MSPlayer: MSGestureView {
                 
                 let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 
-                windowScene?.requestGeometryUpdate(.iOS(interfaceOrientations: .lanscapeRight))
+                windowScene?.requestGeometryUpdate(.iOS(interfaceOrientations: .landscapeRight))
             } else {
                 
                 switch UIDevice.current.orientation {
