@@ -330,7 +330,7 @@ open class MSPlayerLayerView: UIView {
                 let totalTime   = TimeInterval(playerItem.duration.value) / TimeInterval(playerItem.duration.timescale)
                 delegate?.msPlayer(player: self, playTimeDidChange: currentTime, totalTime: totalTime)
             }
-            updateStatus(inclodeLoading: true)
+//            updateStatus(inclodeLoading: true)
         }
     }
     
