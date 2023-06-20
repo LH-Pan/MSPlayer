@@ -135,7 +135,17 @@ class BrightnessController: NSObject {
     }
     
     func setBrightnessValue(_ value: CGFloat) {
-        UIScreen.main.brightness = value
+        
+        if #available(iOS 16.0, *) {
+            
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            
+            windowScene?.screen.brightness = value
+            
+        } else {
+            
+            UIScreen.main.brightness = value
+        }
     }
     
     func removeView() {
