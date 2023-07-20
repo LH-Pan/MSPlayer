@@ -10,7 +10,7 @@ import UIKit
 
 public class MSTimeSlider: UISlider {
     
-    var thumbCenterX: CGFloat {
+    open var thumbCenterX: CGFloat {
         
         let trackRect = self.trackRect(forBounds: frame)
         let thumbRect = self.thumbRect(forBounds: bounds, trackRect: trackRect, value: value)
