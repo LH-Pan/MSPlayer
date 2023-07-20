@@ -9,6 +9,14 @@
 import UIKit
 
 public class MSTimeSlider: UISlider {
+    
+    var thumbCenterX: CGFloat {
+        
+        let trackRect = self.trackRect(forBounds: frame)
+        let thumbRect = self.thumbRect(forBounds: bounds, trackRect: trackRect, value: value)
+        return thumbRect.midX
+    }
+    
     override open func trackRect(forBounds bounds: CGRect) -> CGRect {
         let trackHeigt:CGFloat = bounds.height * 2 / 25
         let position = CGPoint(x: 0 , y: (bounds.height - 1) / 2 - trackHeigt / 2)
