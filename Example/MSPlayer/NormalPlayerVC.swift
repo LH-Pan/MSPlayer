@@ -62,6 +62,7 @@ class NormalPlayerVC: UIViewController {
 }
 
 extension NormalPlayerVC: MSPlayerDelegate {
+
     func msPlayer(_ player: MSPlayer, stateDidChange state: MSPM.State) {
         
     }
@@ -80,6 +81,10 @@ extension NormalPlayerVC: MSPlayerDelegate {
     
     func msPlayer(_ player: MSPlayer, orientChanged isFullScreen: Bool) {
         
+    }
+    
+    func msPlayer(_ player: MSPlayer, getSliderEvent event: UIControl.Event) {
+         
     }
 }
 

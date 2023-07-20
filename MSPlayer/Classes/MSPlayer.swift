@@ -10,12 +10,13 @@ import UIKit
 import MediaPlayer
 
 /// MSPlayerDelegate to observe player state
-public protocol MSPlayerDelegate: class {
+public protocol MSPlayerDelegate: AnyObject {
     func msPlayer(_ player: MSPlayer, stateDidChange state: MSPM.State)
     func msPlayer(_ player: MSPlayer, loadTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval)
     func msPlayer(_ player: MSPlayer, playTimeDidChange current: TimeInterval, total: TimeInterval)
     func msPlayer(_ player: MSPlayer, isPlaying: Bool)
     func msPlayer(_ player: MSPlayer, orientChanged isFullScreen: Bool)
+    func msPlayer(_ player: MSPlayer, getSliderEvent event: UIControl.Event)
 }
 
 open class MSPlayer: MSGestureView {
@@ -664,6 +665,7 @@ extension MSPlayer: MSPlayerControlViewDelegate {
         default:
             break
         }
+        delegate?.msPlayer(self, getSliderEvent: event)
     }
     
     public func controlView(_ controlView: MSPlayerControlView, didChange playBackRate: Float) {
