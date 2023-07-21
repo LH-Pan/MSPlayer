@@ -191,6 +191,7 @@ open class MSPlayerControlView: UIView {
     private func changeSliderAndLabelValueBy(to seconds: TimeInterval, total duration: TimeInterval) {
         let targetTime = FormatDisplay.formatSecondsToString(seconds)
         timeSlider.value = Float(seconds / duration)
+        timeSlider.setThumbLabelValue(value: targetTime)
         player?.progressSliderValue = timeSlider.value
         totalTimeLabel.text = targetTime + "/" + FormatDisplay.formatSecondsToString(totalTime)
     }
