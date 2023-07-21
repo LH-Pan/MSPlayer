@@ -10,11 +10,32 @@ import UIKit
 
 public class MSTimeSlider: UISlider {
     
-    open var thumbCenterX: CGFloat {
+    private var thumbTextLabel: UILabel = UILabel()
+    
+    private var thumbFrame: CGRect {
         
-        let trackRect = self.trackRect(forBounds: frame)
-        let thumbRect = self.thumbRect(forBounds: bounds, trackRect: trackRect, value: value)
-        return thumbRect.midX
+        return thumbRect(forBounds: bounds, trackRect: trackRect(forBounds: bounds), value: value)
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        thumbTextLabel.textAlignment = .center
+        thumbTextLabel.textColor = .white
+        thumbTextLabel.layer.zPosition = layer.zPosition + 1
+        thumbTextLabel.adjustsFontSizeToFitWidth = true
+        thumbTextLabel.font = UIFont(name: "PingFangSC-Medium", size: 12)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        
+        thumbTextLabel.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
+        thumbTextLabel.frame.origin.y = thumbFrame.minY - 5
     }
     
     override open func trackRect(forBounds bounds: CGRect) -> CGRect {
@@ -36,5 +57,10 @@ public class MSTimeSlider: UISlider {
     
     override open func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
         return true
+    }
+    
+    open func setThumbLabelValue(value: String) {
+        
+        thumbTextLabel.text = value
     }
 }
