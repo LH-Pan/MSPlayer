@@ -20,12 +20,7 @@ public class MSTimeSlider: UISlider {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(thumbTextLabel)
-        thumbTextLabel.textAlignment = .center
-        thumbTextLabel.textColor = .white
-        thumbTextLabel.layer.zPosition = layer.zPosition + 1
-        thumbTextLabel.adjustsFontSizeToFitWidth = true
-        thumbTextLabel.font = UIFont(name: "PingFangSC-Medium", size: 12)
+        setupLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -37,6 +32,7 @@ public class MSTimeSlider: UISlider {
         
         thumbTextLabel.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
         thumbTextLabel.frame.origin.y = thumbFrame.minY - 5
+        thumbTextLabel.frame.size = CGSize(width: 60, height: 16)
     }
     
     override open func trackRect(forBounds bounds: CGRect) -> CGRect {
@@ -45,6 +41,16 @@ public class MSTimeSlider: UISlider {
         let customBounds = CGRect(origin: position, size: CGSize(width: bounds.size.width, height: trackHeigt))
         super.trackRect(forBounds: customBounds)
         return customBounds
+    }
+    
+    private func setupLabel() {
+        
+        addSubview(thumbTextLabel)
+        thumbTextLabel.textAlignment = .center
+        thumbTextLabel.textColor = .white
+        thumbTextLabel.layer.zPosition = layer.zPosition + 1
+        thumbTextLabel.adjustsFontSizeToFitWidth = true
+        thumbTextLabel.font = UIFont(name: "PingFangSC-Medium", size: 12)
     }
     
     override open func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
@@ -63,5 +69,10 @@ public class MSTimeSlider: UISlider {
     open func setThumbLabelValue(value: String) {
         
         thumbTextLabel.text = value
+    }
+    
+    open func hiddenOrShowThumbTextLabel(isHidden: Bool) {
+        
+        thumbTextLabel.isHidden = isHidden
     }
 }
