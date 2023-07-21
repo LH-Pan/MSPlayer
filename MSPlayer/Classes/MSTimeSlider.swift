@@ -20,6 +20,7 @@ public class MSTimeSlider: UISlider {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
+        addSubview(thumbTextLabel)
         thumbTextLabel.textAlignment = .center
         thumbTextLabel.textColor = .white
         thumbTextLabel.layer.zPosition = layer.zPosition + 1
