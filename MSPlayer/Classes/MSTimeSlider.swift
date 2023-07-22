@@ -51,6 +51,7 @@ public class MSTimeSlider: UISlider {
         thumbTextLabel.layer.zPosition = layer.zPosition + 1
         thumbTextLabel.adjustsFontSizeToFitWidth = true
         thumbTextLabel.font = UIFont(name: "PingFangSC-Medium", size: 12)
+        thumbTextLabel.isHidden = true
     }
     
     override open func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {

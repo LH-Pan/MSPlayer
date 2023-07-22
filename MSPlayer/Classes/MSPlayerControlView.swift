@@ -443,6 +443,7 @@ open class MSPlayerControlView: UIView {
     
     // MARK: - handle UI slider actions
     @objc func progressSliderTouchBegan(_ sender: UISlider) {
+        timeSlider.hiddenOrShowThumbTextLabel(isHidden: false)
         delegate?.controlView(self, slider: sender, onSlider: .touchDown)
     }
     
@@ -455,6 +456,7 @@ open class MSPlayerControlView: UIView {
     }
     
     @objc func progressSliderTouchEnded(_ sender: UISlider) {
+        timeSlider.hiddenOrShowThumbTextLabel(isHidden: true)
         autoFadeOutControlViewWithAnimation()
         delegate?.controlView(self, slider: sender, onSlider: .touchUpInside)
     }
