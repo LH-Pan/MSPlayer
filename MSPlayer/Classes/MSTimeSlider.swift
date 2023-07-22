@@ -31,8 +31,8 @@ public class MSTimeSlider: UISlider {
         super.layoutSubviews()
         
         thumbTextLabel.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
-        thumbTextLabel.frame.origin.y = thumbFrame.minY - 5
-        thumbTextLabel.frame.size = CGSize(width: 60, height: 16)
+        thumbTextLabel.frame.origin.y = thumbFrame.minY - 28
+        thumbTextLabel.frame.size = CGSize(width: 40, height: 16)
     }
     
     override open func trackRect(forBounds bounds: CGRect) -> CGRect {
