@@ -45,12 +45,12 @@ public class MSTimeSlider: UISlider {
         
         if playerPreviewImageContainerView.frame.origin.x < -44 {
             
-            playerPreviewImageContainerView.frame.origin.x = 0
+            playerPreviewImageContainerView.frame.origin.x = -44
         }
         
         if playerPreviewImageView.frame.origin.x < -42 {
             
-            playerPreviewImageContainerView.frame.origin.x = 2
+            playerPreviewImageContainerView.frame.origin.x = -42
         }
     }
     
