@@ -10,7 +10,9 @@ import UIKit
 
 public class MSTimeSlider: UISlider {
     
-    private var thumbTextLabel: UILabel = UILabel()
+    private let playerPreviewImageContainerView: UIView = UIView()
+    private let playerPreviewImageView: UIImageView = UIImageView()
+    private let thumbTextLabel: UILabel = UILabel()
     
     private var thumbFrame: CGRect {
         
@@ -21,6 +23,8 @@ public class MSTimeSlider: UISlider {
         super.init(frame: frame)
         
         setupLabel()
+        setupContainerView()
+        setupImageView()
     }
     
     required init?(coder: NSCoder) {
@@ -32,7 +36,22 @@ public class MSTimeSlider: UISlider {
         
         thumbTextLabel.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
         thumbTextLabel.frame.origin.y = thumbFrame.minY - 28
-        thumbTextLabel.frame.size = CGSize(width: 40, height: 16)
+        
+        playerPreviewImageContainerView.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
+        playerPreviewImageContainerView.frame.origin.y = thumbFrame.minY - 130
+        
+        playerPreviewImageView.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
+        playerPreviewImageView.frame.origin.y = thumbFrame.minY - 128
+        
+        if playerPreviewImageContainerView.frame.origin.x < 0 {
+            
+            playerPreviewImageContainerView.frame.origin.x = 0
+        }
+        
+        if playerPreviewImageView.frame.origin.x < 2 {
+            
+            playerPreviewImageContainerView.frame.origin.x = 2
+        }
     }
     
     override open func trackRect(forBounds bounds: CGRect) -> CGRect {
@@ -52,6 +71,27 @@ public class MSTimeSlider: UISlider {
         thumbTextLabel.adjustsFontSizeToFitWidth = true
         thumbTextLabel.font = UIFont(name: "PingFangSC-Medium", size: 12)
         thumbTextLabel.isHidden = true
+        thumbTextLabel.frame.size = CGSize(width: 40, height: 16)
+    }
+    
+    private func setupContainerView() {
+        
+        addSubview(playerPreviewImageContainerView)
+        playerPreviewImageContainerView.backgroundColor = .white
+        playerPreviewImageContainerView.layer.cornerRadius = 3.3 * UIScreen.main.bounds.width / 360
+        playerPreviewImageContainerView.clipsToBounds = true
+        playerPreviewImageView.isHidden = true
+        playerPreviewImageView.frame.size = CGSize(width: 164 * UIScreen.main.bounds.width / 360,
+                                                   height: 94 * UIScreen.main.bounds.width / 360)
+    }
+    
+    private func setupImageView() {
+        
+        addSubview(playerPreviewImageView)
+        playerPreviewImageView.layer.cornerRadius = 3.3 * UIScreen.main.bounds.width / 360
+        playerPreviewImageView.isHidden = true
+        playerPreviewImageView.frame.size = CGSize(width: 160 * UIScreen.main.bounds.width / 360,
+                                                   height: 90 * UIScreen.main.bounds.width / 360)
     }
     
     override open func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
@@ -75,5 +115,16 @@ public class MSTimeSlider: UISlider {
     open func hiddenOrShowThumbTextLabel(isHidden: Bool) {
         
         thumbTextLabel.isHidden = isHidden
+    }
+    
+    open func setPreviewImage(image: UIImage) {
+        
+        playerPreviewImageView.image = image
+    }
+    
+    open func hiddenOrShowPreviewImage(isHidden: Bool) {
+        
+        playerPreviewImageContainerView.isHidden = isHidden
+        playerPreviewImageView.isHidden = isHidden
     }
 }
