@@ -43,14 +43,17 @@ public class MSTimeSlider: UISlider {
         playerPreviewImageView.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
         playerPreviewImageView.frame.origin.y = thumbFrame.minY - 128
         
-        if playerPreviewImageContainerView.frame.origin.x < -44 {
+        // 此為 timeSlider 目前左邊的間距
+        let leadingGap: CGFloat = 20 + (30 * UIScreen.main.bounds.width / 375) * 24 / 32
+        
+        if playerPreviewImageContainerView.frame.origin.x < -leadingGap {
             
-            playerPreviewImageContainerView.frame.origin.x = -44
+            playerPreviewImageContainerView.frame.origin.x = -leadingGap
         }
         
-        if playerPreviewImageView.frame.origin.x < -42 {
+        if playerPreviewImageView.frame.origin.x < -leadingGap - 2 {
             
-            playerPreviewImageContainerView.frame.origin.x = -42
+            playerPreviewImageContainerView.frame.origin.x = -leadingGap - 2
         }
     }
     
