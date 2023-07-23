@@ -80,7 +80,7 @@ public class MSTimeSlider: UISlider {
         playerPreviewImageContainerView.backgroundColor = .white
         playerPreviewImageContainerView.layer.cornerRadius = 3.3 * UIScreen.main.bounds.width / 360
         playerPreviewImageContainerView.clipsToBounds = true
-        playerPreviewImageView.isHidden = true
+//        playerPreviewImageView.isHidden = true
         playerPreviewImageView.frame.size = CGSize(width: 164 * UIScreen.main.bounds.width / 360,
                                                    height: 94 * UIScreen.main.bounds.width / 360)
     }
@@ -89,7 +89,7 @@ public class MSTimeSlider: UISlider {
         
         addSubview(playerPreviewImageView)
         playerPreviewImageView.layer.cornerRadius = 3.3 * UIScreen.main.bounds.width / 360
-        playerPreviewImageView.isHidden = true
+//        playerPreviewImageView.isHidden = true
         playerPreviewImageView.frame.size = CGSize(width: 160 * UIScreen.main.bounds.width / 360,
                                                    height: 90 * UIScreen.main.bounds.width / 360)
     }
@@ -124,7 +124,7 @@ public class MSTimeSlider: UISlider {
     
     open func hiddenOrShowPreviewImage(isHidden: Bool) {
         
-        playerPreviewImageContainerView.isHidden = isHidden
-        playerPreviewImageView.isHidden = isHidden
+//        playerPreviewImageContainerView.isHidden = isHidden
+//        playerPreviewImageView.isHidden = isHidden
     }
 }
