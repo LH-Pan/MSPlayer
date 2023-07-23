@@ -43,12 +43,12 @@ public class MSTimeSlider: UISlider {
         playerPreviewImageView.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
         playerPreviewImageView.frame.origin.y = thumbFrame.minY - 128
         
-        if playerPreviewImageContainerView.frame.origin.x < 0 {
+        if playerPreviewImageContainerView.frame.origin.x < -44 {
             
             playerPreviewImageContainerView.frame.origin.x = 0
         }
         
-        if playerPreviewImageView.frame.origin.x < 2 {
+        if playerPreviewImageView.frame.origin.x < -42 {
             
             playerPreviewImageContainerView.frame.origin.x = 2
         }
