@@ -38,10 +38,10 @@ public class MSTimeSlider: UISlider {
         thumbTextLabel.frame.origin.y = thumbFrame.minY - 28
         
         playerPreviewImageContainerView.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
-        playerPreviewImageContainerView.frame.origin.y = thumbFrame.minY - 130
+        playerPreviewImageContainerView.frame.origin.y = thumbFrame.minY - 200
         
         playerPreviewImageView.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
-        playerPreviewImageView.frame.origin.y = thumbFrame.minY - 128
+        playerPreviewImageView.frame.origin.y = thumbFrame.minY - 198
         
         // 此為 timeSlider 目前左邊的間距
         let leadingGap: CGFloat = 20 + (30 * UIScreen.main.bounds.width / 375) * 24 / 32
@@ -92,7 +92,7 @@ public class MSTimeSlider: UISlider {
         
         addSubview(playerPreviewImageView)
         playerPreviewImageView.layer.cornerRadius = 3.3 * UIScreen.main.bounds.width / 360
-        playerPreviewImageView.isHidden = true
+//        playerPreviewImageView.isHidden = true
         playerPreviewImageView.frame.size = CGSize(width: 160 * UIScreen.main.bounds.width / 360,
                                                    height: 90 * UIScreen.main.bounds.width / 360)
     }
@@ -127,7 +127,7 @@ public class MSTimeSlider: UISlider {
     
     open func hiddenOrShowPreviewImage(isHidden: Bool) {
         
-        playerPreviewImageContainerView.isHidden = isHidden
-        playerPreviewImageView.isHidden = isHidden
+//        playerPreviewImageContainerView.isHidden = isHidden
+//        playerPreviewImageView.isHidden = isHidden
     }
 }
