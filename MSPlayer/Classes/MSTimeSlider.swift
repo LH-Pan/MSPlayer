@@ -35,7 +35,7 @@ public class MSTimeSlider: UISlider {
         super.layoutSubviews()
         
         thumbTextLabel.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
-        thumbTextLabel.frame.origin.y = thumbFrame.minY - 28
+        thumbTextLabel.frame.origin.y = thumbFrame.minY - 16
         
         playerPreviewImageContainerView.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
         playerPreviewImageContainerView.frame.origin.y = thumbFrame.minY - 28 - (94 * UIScreen.main.bounds.width / 360)
