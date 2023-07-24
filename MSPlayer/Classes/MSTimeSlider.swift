@@ -38,10 +38,10 @@ public class MSTimeSlider: UISlider {
         thumbTextLabel.frame.origin.y = thumbFrame.minY - 28
         
         playerPreviewImageContainerView.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
-        playerPreviewImageContainerView.frame.origin.y = thumbFrame.minY - 134
+        playerPreviewImageContainerView.frame.origin.y = thumbFrame.minY - 28 - (94 * UIScreen.main.bounds.width / 360)
         
         playerPreviewImageView.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
-        playerPreviewImageView.frame.origin.y = thumbFrame.minY - 132
+        playerPreviewImageView.frame.origin.y = thumbFrame.minY - 28 - (92 * UIScreen.main.bounds.width / 360)
         
         // 此為 timeSlider 目前左邊的間距
         let leadingGap: CGFloat = 20 + (30 * UIScreen.main.bounds.width / 375) * 24 / 32
