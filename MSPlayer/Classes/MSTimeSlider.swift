@@ -53,7 +53,7 @@ public class MSTimeSlider: UISlider {
         
         if playerPreviewImageView.frame.origin.x < -leadingGap + 2 {
             
-            playerPreviewImageContainerView.frame.origin.x = -leadingGap + 2
+            playerPreviewImageView.frame.origin.x = -leadingGap + 2
         }
     }
     
