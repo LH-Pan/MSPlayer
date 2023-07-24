@@ -16,7 +16,7 @@ public protocol MSPlayerDelegate: AnyObject {
     func msPlayer(_ player: MSPlayer, playTimeDidChange current: TimeInterval, total: TimeInterval)
     func msPlayer(_ player: MSPlayer, isPlaying: Bool)
     func msPlayer(_ player: MSPlayer, orientChanged isFullScreen: Bool)
-    func msPlayer(_ player: MSPlayer, getSliderEvent event: UIControl.Event)
+    func msPlayer(_ player: MSPlayer, slider: UISlider, getSliderEvent event: UIControl.Event)
 }
 
 open class MSPlayer: MSGestureView {
@@ -665,7 +665,7 @@ extension MSPlayer: MSPlayerControlViewDelegate {
         default:
             break
         }
-        delegate?.msPlayer(self, getSliderEvent: event)
+        delegate?.msPlayer(self, slider: slider, getSliderEvent: event)
     }
     
     public func controlView(_ controlView: MSPlayerControlView, didChange playBackRate: Float) {

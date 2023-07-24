@@ -83,7 +83,7 @@ extension NormalPlayerVC: MSPlayerDelegate {
         
     }
     
-    func msPlayer(_ player: MSPlayer, getSliderEvent event: UIControl.Event) {
+    func msPlayer(_ player: MSPlayer, slider: UISlider, getSliderEvent event: UIControl.Event) {
          
     }
 }
