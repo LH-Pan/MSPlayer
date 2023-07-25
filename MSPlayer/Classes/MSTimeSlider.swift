@@ -14,6 +14,8 @@ public class MSTimeSlider: UISlider {
     private let playerPreviewImageView: UIImageView = UIImageView()
     private let thumbTextLabel: UILabel = UILabel()
     
+    private var isNoPreview: Bool = true
+    
     private var thumbFrame: CGRect {
         
         return thumbRect(forBounds: bounds, trackRect: trackRect(forBounds: bounds), value: value)
@@ -93,6 +95,7 @@ public class MSTimeSlider: UISlider {
         addSubview(playerPreviewImageView)
         playerPreviewImageView.layer.cornerRadius = 3.3 * UIScreen.main.bounds.width / 360
         playerPreviewImageView.isHidden = true
+        playerPreviewImageView.backgroundColor = .black
         playerPreviewImageView.frame.size = CGSize(width: 160 * UIScreen.main.bounds.width / 360,
                                                    height: 90 * UIScreen.main.bounds.width / 360)
     }
@@ -117,7 +120,7 @@ public class MSTimeSlider: UISlider {
     
     open func hiddenOrShowThumbTextLabel(isHidden: Bool) {
         
-        thumbTextLabel.isHidden = isHidden
+        thumbTextLabel.isHidden = isNoPreview ? true : isHidden
     }
     
     open func setPreviewImage(image: UIImage) {
@@ -127,7 +130,12 @@ public class MSTimeSlider: UISlider {
     
     open func hiddenOrShowPreviewImage(isHidden: Bool) {
         
-        playerPreviewImageContainerView.isHidden = isHidden
-        playerPreviewImageView.isHidden = isHidden
+        playerPreviewImageContainerView.isHidden = isNoPreview ? true : isHidden
+        playerPreviewImageView.isHidden = isNoPreview ? true : isHidden
+    }
+    
+    open func setupIsNoPreviewImages(_ isNoPreview: Bool) {
+        
+        self.isNoPreview = isNoPreview
     }
 }
