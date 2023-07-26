@@ -21,6 +21,27 @@ public class MSTimeSlider: UISlider {
         return thumbRect(forBounds: bounds, trackRect: trackRect(forBounds: bounds), value: value)
     }
     
+    private var widthRatio: CGFloat {
+        
+        if UIApplication.shared.statusBarOrientation.isPortrait {
+            
+            return UIScreen.main.bounds.width / 360
+            
+        } else {
+            
+            return UIScreen.main.bounds.height / 360
+        }
+    }
+    
+    private var leadingGap: CGFloat {
+        
+        let portraitLeadingGap: CGFloat = 20 + (30 * widthRatio) * 24 / 32
+        
+        let landscapeLeadingGap: CGFloat = 40 + 20 + 20 + (30 * widthRatio) * 24 / 32
+        
+        return UIApplication.shared.statusBarOrientation.isPortrait ? portraitLeadingGap : landscapeLeadingGap
+    }
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -40,14 +61,14 @@ public class MSTimeSlider: UISlider {
         thumbTextLabel.frame.origin.y = thumbFrame.minY - 16
         
         playerPreviewImageContainerView.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
-        playerPreviewImageContainerView.frame.origin.y = thumbFrame.minY - 28 - (94 * UIScreen.main.bounds.width / 360)
+        playerPreviewImageContainerView.frame.origin.y = thumbFrame.minY - 28 - (94 * widthRatio)
+        playerPreviewImageContainerView.frame.size = CGSize(width: 164 * widthRatio, height: 94 * widthRatio)
         
         playerPreviewImageView.center.x = ((thumbFrame.maxX - thumbFrame.minX) / 2) + thumbFrame.minX
-        playerPreviewImageView.frame.origin.y = thumbFrame.minY - 28 - (92 * UIScreen.main.bounds.width / 360)
+        playerPreviewImageView.frame.origin.y = thumbFrame.minY - 28 - (92 * widthRatio)
+        playerPreviewImageView.frame.size = CGSize(width: 160 * widthRatio, height: 90 * widthRatio)
         
         // 此為 timeSlider 目前左邊的間距
-        let leadingGap: CGFloat = 20 + (30 * UIScreen.main.bounds.width / 375) * 24 / 32
-        
         if playerPreviewImageContainerView.frame.origin.x < -leadingGap {
             
             playerPreviewImageContainerView.frame.origin.x = -leadingGap
@@ -83,21 +104,17 @@ public class MSTimeSlider: UISlider {
         
         addSubview(playerPreviewImageContainerView)
         playerPreviewImageContainerView.backgroundColor = .white
-        playerPreviewImageContainerView.layer.cornerRadius = 3.3 * UIScreen.main.bounds.width / 360
+        playerPreviewImageContainerView.layer.cornerRadius = 3.3 * widthRatio
         playerPreviewImageContainerView.clipsToBounds = true
         playerPreviewImageContainerView.isHidden = true
-        playerPreviewImageContainerView.frame.size = CGSize(width: 164 * UIScreen.main.bounds.width / 360,
-                                                            height: 94 * UIScreen.main.bounds.width / 360)
     }
     
     private func setupImageView() {
         
         addSubview(playerPreviewImageView)
-        playerPreviewImageView.layer.cornerRadius = 3.3 * UIScreen.main.bounds.width / 360
+        playerPreviewImageView.layer.cornerRadius = 3.3 * widthRatio
         playerPreviewImageView.isHidden = true
         playerPreviewImageView.backgroundColor = .black
-        playerPreviewImageView.frame.size = CGSize(width: 160 * UIScreen.main.bounds.width / 360,
-                                                   height: 90 * UIScreen.main.bounds.width / 360)
     }
     
     override open func thumbRect(forBounds bounds: CGRect, trackRect rect: CGRect, value: Float) -> CGRect {
